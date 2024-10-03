@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+class ATarget;
+
 class ASpell
 {
     protected:
@@ -11,20 +13,27 @@ class ASpell
     // * name (string)
     // * effects (string)
         std::string _name;
-        std::string _effect;
+        std::string _effects;
 
     public:
         ASpell();
-        // Both will have getters (getName and getEffects) that return strings.
+        virtual ~ASpell();
+		ASpell(std::string const & name, std::string const & effects);
+		ASpell & operator = (ASpell const & as);
+        
+		// Both will have getters (getName and getEffects) that return strings.
         // Also add a clone pure method that returns a pointer to ASpell.
         // All these functions can be called on a constant object.
-        std::string getName() const;
-        std::string getEffects() const;
+        std::string const & getName() const;
+        std::string const & getEffects() const;
         virtual ASpell* clone() const = 0;
-        virtual ~ASpell();
         // ASpell has a constructor that takes its name and its effects, in that order.
-        ASpell 
-    
+        ASpell(ASpell const & obj);
+
+		// Finally, add to your ASpell class a launch function that takes a reference to constant ATarget.
+		// This one will simply call the getHitBySpell of the passed object, passing the current instance as parameter.
+		void launch(ATarget const & at_ref) const;
+
 }
 
 #endif

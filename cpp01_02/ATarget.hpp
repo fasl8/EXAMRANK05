@@ -3,11 +3,18 @@
 
 #include <iostream>
 
+class ASpell;
+
 class ATarget
 {
     protected:
         std::string _type;
     public:
+		ATarget();
+		~ATarget();
+		ATarget(ATarget const & obj);
+		ATarget & operator=(ATarget const & at);
+
         // Now you will create an ATarget abstract class, in Coplien's form. It has a type
         // attribute, which is a string, and its associated getter, getType, that return a
         // reference to constant string.
@@ -19,15 +26,10 @@ class ATarget
         // It has a constructor that takes its type.
         ATarget(std::string type);
 
-
         // Now, add to your ATarget a getHitBySpell function that takes a reference to constant ASpell.
-        void    getHitBySpell(ASpell const & spell) const;
+        void    getHitBySpell(ASpell const & as_ref) const;
+
 
 }
 #endif
 
-
-
-	public :
-		ATarget & operator=(ATarget const & rhs);
-		ATarget(ATarget const & obj);
