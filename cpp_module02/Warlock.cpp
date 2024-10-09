@@ -44,23 +44,24 @@ void Warlock::introduce() const
     std::cout << this->name << ": I am " << this->name << ", " << this->title << "!\n";
 }
 
-//makes the Warlock learn a spell
+// Modify the Warlock, now, make it have a spell book that will be created with
+// him and destroyed with him. Also make his learnSpell and forgetSpell functions
+// call those of the spell book.
+
+// The launchSpell function will have to use the SpellBook to create the spell
+// it's attempting to launch.
 void Warlock::learnSpell(ASpell *as)
 {
-	if (as)
-		s_arr[as->getName()] = as;
+	SpellBook.learnSpell(as);	
 }
 
-// makes the Warlock forget it. If it's not a known spell, does nothing.
 void Warlock::forgetSpell(std::string sname)
 {
-	if (s_arr.find(sname) != s_arr.end())
-		s_arr.erase(s_arr.find(sname));
+	SpellBook.forgetSpell(sname);
 }
 
-// launches the spell on the selected target. If it's not a known spell, does nothing.
 void Warlock::launchSpell(std::string sname, ATarget const & at_ref)
 {
-	if (s_arr.find(sname) != s_arr.end())
-		s_arr[sname]->launch(at_ref);
+	if (SpellBook.createSpell(sname))
+		SpellBook.createSpell(sname)->launch(at_ref);
 }

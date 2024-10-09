@@ -3,7 +3,11 @@
 #include "ATarget.hpp"
 #include "Dummy.hpp"
 #include "Warlock.hpp"
-
+#include "Fireball.hpp"
+#include "SpellBook.hpp"
+#include "BrickWall.hpp"
+#include "TargetGenerator.hpp"
+#include "Polymorph.hpp"
 int main()
 {
   Warlock richard("Richard", "foo");
