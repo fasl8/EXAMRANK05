@@ -45,6 +45,7 @@ void Warlock::introduce() const
 }
 
 //makes the Warlock learn a spell
+//Remember: "Learn a spell, add it to the collection."
 void Warlock::learnSpell(ASpell *as)
 {
 	if (as)
@@ -52,6 +53,7 @@ void Warlock::learnSpell(ASpell *as)
 }
 
 // makes the Warlock forget it. If it's not a known spell, does nothing.
+// Remember: "Forget a spell, remove it from the collection."
 void Warlock::forgetSpell(std::string sname)
 {
 	if (s_arr.find(sname) != s_arr.end())
@@ -59,6 +61,7 @@ void Warlock::forgetSpell(std::string sname)
 }
 
 // launches the spell on the selected target. If it's not a known spell, does nothing.
+// Remember: "Launch a spell, if it exists, cast it on the target."
 void Warlock::launchSpell(std::string sname, ATarget const & at_ref)
 {
 	if (s_arr.find(sname) != s_arr.end())
